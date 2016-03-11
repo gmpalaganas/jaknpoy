@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">JakNPoy</string>
+    <string name="title_activity_game">GameActivity</string>
+    <string name="draw_text">DRAW</string>
+    <string name="win_text">WIN</string>
+    <string name="lose_text">LOSE</string>
+    <string name="title_activity_result">ResultActivity</string>
+    <string name="default_result_text">PLACE HOLDER</string>
+</resources>
