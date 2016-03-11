@@ -33,75 +33,20 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    private int userScore;
-    private int aiScore;
-
-    private TextView playerScoreText;
-    private TextView aiScoreText;
-    private TextView resultText;
-
-    private ImageButton rockButton;
-    private ImageButton paperButton;
-    private ImageButton scissorButton;
-
-    private ImageView playerHandImage;
-    private ImageView aiHandImage;
-
-    private List<ImageButton> handButtonsList;
-
-    private Handler handler;
-
-    public final static String RESULT_MESSAGE = "com.example.genesis.jaknpoy.RESULT_MESSAGE";
+    //Your code here
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        playerScoreText = (TextView) findViewById(R.id.playerScoreText);
-        aiScoreText = (TextView) findViewById(R.id.aiScoreText);
-        resultText = (TextView) findViewById(R.id.resultText);
-
-        rockButton = (ImageButton) findViewById(R.id.rockButton);
-        paperButton = (ImageButton) findViewById(R.id.paperButton);
-        scissorButton = (ImageButton) findViewById(R.id.scissorButton);
-
-        handButtonsList = new ArrayList<>();
-
-        handButtonsList.add(rockButton);
-        handButtonsList.add(paperButton);
-        handButtonsList.add(scissorButton);
-
-        playerHandImage = (ImageView) findViewById(R.id.playerHandImage);
-        aiHandImage = (ImageView) findViewById(R.id.aiHandImage);
-
-        handler = new Handler();
-
-        userScore = 0;
-        aiScore = 0;
+        //Your code here
 
     }
 
     public void move(View view) {
-        Hand userHand = Hand.ROCK;
-        Hand aiHand = Hand.randomHand();
 
-        switch (view.getId()) {
-            case R.id.rockButton: {
-                userHand = Hand.ROCK;
-            }
-            break;
-
-            case R.id.paperButton: {
-                userHand = Hand.PAPER;
-            }
-            break;
-
-            case R.id.scissorButton: {
-                userHand = Hand.SCISSORS;
-            }
-            break;
-        }
+        //Your code here
 
         int result = compareHands(userHand,aiHand);
         updatehand(userHand, this.playerHandImage);
@@ -118,37 +63,18 @@ public class GameActivity extends AppCompatActivity {
             0 if draw
      */
     private int compareHands(Hand hand1, Hand hand2){
-        int hand1Val = hand1.ordinal();
-        int hand2Val = hand2.ordinal();
-
-        int retVal = (3 + hand1Val - hand2Val) % 3;
-
-        return retVal;
+        //Your code here
     }
 
     //Updates Game Screen depending on compare value
     private void updateGameScreen(int compareVal){
-
-        if(compareVal == 0) {
-            resultText.setText(R.string.draw_text);
-        } else if(compareVal == 1){
-            resultText.setText(R.string.win_text);
-            this.userScore++;
-            this.playerScoreText.setText(Integer.toString(this.userScore));
-        } else if(compareVal == 2){
-            resultText.setText(R.string.lose_text);
-            this.aiScore++;
-            this.aiScoreText.setText(Integer.toString(this.aiScore));
-        }
+        //Your code here
     }
-
+    
+    //Disable Buttons for a ms microseconds
     private void timedDisableButtons(int ms){
-        for(ImageButton ib : handButtonsList)
-            ib.setEnabled(false);
-        resultText.setVisibility(View.VISIBLE);
-        playerHandImage.setVisibility(View.VISIBLE);
-        aiHandImage.setVisibility(View.VISIBLE);
 
+        //Your code here
         Timer buttonTimer = new Timer();
         buttonTimer.schedule(new TimerTask() {
             @Override
@@ -156,46 +82,23 @@ public class GameActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        for(ImageButton ib : handButtonsList)
-                            ib.setEnabled(true);
-                        resultText.setVisibility(View.INVISIBLE);
-                        playerHandImage.setVisibility(View.INVISIBLE);
-                        aiHandImage.setVisibility(View.INVISIBLE);
+                        //Your code here
                     }
                 });
             }
         }, ms);
     }
-
+    
+    
+    //Show what the players have chosen
     private void updatehand(Hand hand, ImageView iv){
-        switch(hand){
-            case ROCK:{
-                iv.setBackground(getResources().getDrawable(R.drawable.rock));
-            }break;
-
-            case PAPER:{
-                iv.setBackground(getResources().getDrawable(R.drawable.paper));
-            }break;
-
-            case SCISSORS:{
-                iv.setBackground(getResources().getDrawable(R.drawable.scissor));
-            }break;
-        }
+        //Your code here
     }
 
+    //Checks the winner
+    //If there is a winner go to ResultActivity
     private void checkWinner(int winningScore){
-        if(this.userScore == winningScore || this.aiScore == winningScore) {
-            final GameActivity thisActivity = this;
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent intent = new Intent(thisActivity, ResultActivity.class);
-                    String message = (userScore > aiScore) ? "You Won!" : "You Lost!";
-                    intent.putExtra(RESULT_MESSAGE, message);
-                    startActivity(intent);
-                }
-            }, 1000);
-        }
+        //Your code here
     }
 }
 

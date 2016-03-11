@@ -8,27 +8,22 @@ import android.widget.TextView;
 
 public class ResultActivity extends AppCompatActivity {
 
-    TextView resultText;
+    //Your code here
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
-        Intent intent = getIntent();
-        String message = intent.getStringExtra(GameActivity.RESULT_MESSAGE);
 
-        resultText = (TextView) findViewById(R.id.resultText);
-        resultText.setText(message);
+        //Your code here
 
     }
 
     public void playAgain(View view){
-        Intent intent = new Intent(this, GameActivity.class);
-        startActivity(intent);
+        //Your code here
     }
 
     public void returnToMainMenu(View view){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        //Your code here
     }
 }
